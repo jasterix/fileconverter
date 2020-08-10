@@ -1,0 +1,24 @@
+{
+  "name": "fileconverter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1"
+  },
+  "scripts": {
+    "test": "mocha main.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasterix/fileconverter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasterix/fileconverter/issues"
+  },
+  "homepage": "https://github.com/jasterix/fileconverter#readme"
+}

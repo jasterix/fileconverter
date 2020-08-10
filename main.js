@@ -1,13 +1,12 @@
-
 const fs = require( "fs" )
 const path = require( "path" )
 const { basename } = require( "path" )
 const fileDir = path.join( __dirname, "../fileConverter/files" )
 
 // Get all files' names
-const getAllFiles = function ( dirPath, arrayOfFiles ) {
+const getAllFiles = function ( dirPath, arrayOfFiles = [] ) {
     files = fs.readdirSync( dirPath )
-    arrayOfFiles = arrayOfFiles || []
+    arrayOfFiles = arrayOfFiles
     files.forEach( function ( file ) {
         const filePath = path.join( dirPath, file )
 
@@ -50,17 +49,23 @@ const replaceFilePath = () => {
 
 
 // Find and replace in all file names
-const renameFiles = ( files, stringMatch, stringReplace ) => {
+const findAndReplace = ( files, stringMatch, stringReplace ) => {
     files.filter( function ( file ) {
         return file.match( stringMatch )
     } ).forEach( function ( file ) {
         let filePath = file,
             newFilePath = file.replace( stringMatch, stringReplace )
         fs.renameSync( filePath, newFilePath )
-        console.log( newFilePath );
     } )
-    console.log( "Files have been renamed" );
+    console.log( `Files have been renamed` );
 }
 
 
-renameFiles( arrayOfFiles, " -.html", ".html" )
+findAndReplace( arrayOfFiles, " -.html", ".html" )
+
+module.exports = {
+    getAllFiles,
+    createNewFilePath,
+    replaceFilePath,
+    findAndReplace
+}
